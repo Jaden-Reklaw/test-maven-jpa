@@ -1,6 +1,7 @@
 package spring.boot;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Person {
@@ -17,6 +18,9 @@ public class Person {
     private String MiddleName;
     private String LastName;
     private String SSN;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Email> emailList;
     //endregion
 
     //region Constructors
@@ -75,6 +79,14 @@ public class Person {
 
     public void setSSN(String SSN) {
         this.SSN = SSN;
+    }
+
+    public List<Email> getEmailList() {
+        return emailList;
+    }
+
+    public void setEmailList(List<Email> emailList) {
+        this.emailList = emailList;
     }
     //endregion
 }
